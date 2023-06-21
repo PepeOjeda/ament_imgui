@@ -1,0 +1,59 @@
+cmake_minimum_required(VERSION 3.5)
+project(ament_imgui)
+
+##################
+set(CMAKE_BUILD_TYPE "None") 
+set(CMAKE_CXX_FLAGS "-std=c++17 -g -O2 ${CMAKE_CXX_FLAGS}")
+
+
+
+find_package(ament_cmake REQUIRED)
+
+include_directories(
+    include 
+    third_party/imgui
+    third_party/imgui/backends 
+
+    third_party/implot
+)
+
+add_subdirectory(third_party/glfw)
+
+
+add_library(imgui 
+    src/imgui.cpp
+    third_party/imgui/backends/imgui_impl_glfw.cpp
+    third_party/imgui/backends/imgui_impl_opengl3.cpp
+    third_party/imgui/imgui_draw.cpp
+    third_party/imgui/imgui_tables.cpp
+    third_party/imgui/imgui_widgets.cpp
+    third_party/imgui/imgui.cpp
+
+    third_party/implot/implot.cpp
+    third_party/implot/implot_items.cpp
+)
+
+add_dependencies(imgui glfw)
+
+target_link_libraries(imgui
+    glfw
+    OpenGL
+)
+
+ament_export_libraries(imgui)
+ament_export_libraries(glfw)
+ament_export_libraries(OpenGL)
+ament_export_include_directories(include include/imgui)
+
+
+install(
+    TARGETS imgui
+    DESTINATION lib
+)
+
+install(
+    DIRECTORY include/ament_imgui third_party/imgui third_party/implot
+    DESTINATION include
+)
+
+ament_package()

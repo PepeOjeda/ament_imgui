@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>ament_imgui</name>
+  <version>1.0.0</version>
+  <description>.</description>
+  <maintainer email="o@uma.es">a</maintainer>
+
+
+  <!-- One license tag required, multiple allowed, one license per tag -->
+  <license>LGPLv3</license>
+
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+  
+</package>
