@@ -59,8 +59,9 @@ void AMENT_IMGUI::setup(const char* ini_file_path){
     //io.ConfigViewportsNoAutoMerge = true;
     //io.ConfigViewportsNoTaskBarIcon = true;
 
-    printf("imgui.ini filepath: %s\n", ini_file_path);
-    io.IniFilename = ini_file_path;
+    static std::string filepath(ini_file_path);
+    fprintf(stderr, "imgui.ini filepath: %s\n", filepath.c_str());
+    io.IniFilename = filepath.c_str();
 
     // Setup Dear ImGui style
     ImGui::StyleColorsDark();
