@@ -33,18 +33,18 @@ add_library(imgui
     third_party/implot/implot_items.cpp
 )
 
+
 add_dependencies(imgui glfw)
 
 target_link_libraries(imgui
-    glfw
-    OpenGL
+glfw
+OpenGL
 )
 
 ament_export_libraries(imgui)
 ament_export_libraries(glfw)
 ament_export_libraries(OpenGL)
 ament_export_include_directories(include include/imgui)
-
 
 install(
     TARGETS imgui
@@ -55,5 +55,21 @@ install(
     DIRECTORY include/ament_imgui third_party/imgui third_party/implot
     DESTINATION include
 )
+
+
+
+
+
+#add_executable(example
+#    third_party/imgui/imgui_demo.cpp
+#    third_party/imgui/examples/example_glfw_opengl3/main.cpp)
+#add_dependencies(example imgui)
+#target_link_libraries(example imgui)
+#
+#
+#install(
+#    TARGETS example
+#    DESTINATION share/${PROJECT_NAME}
+#)
 
 ament_package()
