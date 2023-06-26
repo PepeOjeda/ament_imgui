@@ -1,0 +1,39 @@
+# Ament_imgui
+
+This is an ament pakcage that greatly simplifies the setup required to use [Dear ImGui](https://github.com/ocornut/imgui) and [Implot](https://github.com/epezent/implot) to create a graphical interface for a ROS2 node. 
+
+In your `CMakeLists.txt`, instead of figuring out all the include folders and source files, all you have to do is:
+
+```
+find_package(ament_imgui REQUIRED)
+ament_target_dependencies(ament_imgui)
+```
+
+And, in your code, the entire setup is this:
+
+```c++
+#include <ament_imgui/ament_imgui.h>
+
+void main()
+{
+    AMENT_IMGUI::setup( "optional path to imgui.ini file" );
+    rclcpp::Rate rate(30);
+    while (rclcpp::ok())
+    {
+        AMENT_IMGUI::StartFrame();
+
+        //
+        //use whatever ImGui calls you want here, directly
+        ImGui::Button();
+        //
+
+        AMENT_IMGUI::Render();
+        
+        rate.sleep();
+    }
+    AMENT_IMGUI::close();
+}
+```
+
+
+There is, however, a catch: this package only supports using OpenGL3 and GLFW as the backend. While it would not be difficult to support other combinations (after all, the code to do so is included in the examples of Dear Imgui), I simply cannot be bothered.

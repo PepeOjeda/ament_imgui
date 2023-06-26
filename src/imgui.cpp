@@ -13,7 +13,8 @@ static void glfw_error_callback(int error, const char* description)
     fprintf(stderr, "Glfw Error %d: %s\n", error, description);
 }
 
-void AMENT_IMGUI::setup(const char* ini_file_path){
+void AMENT_IMGUI::setup(const char* ini_file_path, const char* window_title, float width, float height)
+{
     glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit())
         return;
@@ -41,8 +42,9 @@ void AMENT_IMGUI::setup(const char* ini_file_path){
     //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);            // 3.0+ only
 #endif
 
+    static std::string window_title_str = window_title;
     // Create window with graphics context
-    window = glfwCreateWindow(550, 600, "GSL Server", NULL, NULL);
+    window = glfwCreateWindow(width, height, window_title_str.c_str(), NULL, NULL);
     if (window == NULL)
         return;
     glfwMakeContextCurrent(window);
