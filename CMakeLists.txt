@@ -8,6 +8,7 @@ set(CMAKE_CXX_FLAGS "-std=c++17 -g -O2 ${CMAKE_CXX_FLAGS}")
 
 
 find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
 
 include_directories(
     include 
@@ -35,7 +36,7 @@ add_library(imgui
 
 
 add_dependencies(imgui glfw)
-
+ament_target_dependencies(imgui rclcpp)
 target_link_libraries(imgui
 glfw
 OpenGL
