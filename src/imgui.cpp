@@ -63,9 +63,14 @@ void AMENT_IMGUI::setup(const char* ini_file_path, const char* window_title, flo
     // io.ConfigViewportsNoAutoMerge = true;
     // io.ConfigViewportsNoTaskBarIcon = true;
 
-    static std::string filepath(ini_file_path);
-    RCLCPP_INFO(rclcpp::get_logger("AMENT_IMGUI"), "imgui.ini filepath: %s\n", filepath.c_str());
-    io.IniFilename = filepath.c_str();
+    if(ini_file_path != nullptr)
+    {
+        static std::string filepath(ini_file_path);
+        RCLCPP_INFO(rclcpp::get_logger("AMENT_IMGUI"), "imgui.ini filepath: %s\n", filepath.c_str());
+        io.IniFilename = filepath.c_str();
+    }
+    else
+        RCLCPP_WARN(rclcpp::get_logger("AMENT_IMGUI"), "No .ini file provided. Layout changes will not be serialized.");
 
     // Setup Dear ImGui style
     ImGui::StyleColorsDark();
