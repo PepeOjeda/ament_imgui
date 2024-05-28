@@ -7,14 +7,14 @@
 #include <stdio.h>
 #include <rclcpp/logging.hpp>
 
-GLFWwindow* AMENT_IMGUI::window;
+GLFWwindow* AmentImgui::window;
 
 static void glfw_error_callback(int error, const char* description)
 {
     fprintf(stderr, "Glfw Error %d: %s\n", error, description);
 }
 
-void AMENT_IMGUI::setup(const char* ini_file_path, const char* window_title, float width, float height)
+void AmentImgui::Setup(const char* ini_file_path, const char* window_title, float width, float height)
 {
     glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit())
@@ -66,11 +66,14 @@ void AMENT_IMGUI::setup(const char* ini_file_path, const char* window_title, flo
     if(ini_file_path != nullptr)
     {
         static std::string filepath(ini_file_path);
-        RCLCPP_INFO(rclcpp::get_logger("AMENT_IMGUI"), "imgui.ini filepath: %s\n", filepath.c_str());
+        RCLCPP_INFO(rclcpp::get_logger("AmentImgui"), "imgui.ini filepath: %s\n", filepath.c_str());
         io.IniFilename = filepath.c_str();
     }
     else
-        RCLCPP_WARN(rclcpp::get_logger("AMENT_IMGUI"), "No .ini file provided. Layout changes will not be serialized.");
+    {
+        io.IniFilename = nullptr;
+        RCLCPP_WARN(rclcpp::get_logger("AmentImgui"), "No .ini file provided. Layout changes will not be serialized.");
+    }
 
     // Setup Dear ImGui style
     ImGui::StyleColorsDark();
@@ -89,7 +92,7 @@ void AMENT_IMGUI::setup(const char* ini_file_path, const char* window_title, flo
     ImGui_ImplOpenGL3_Init(glsl_version);
 }
 
-void AMENT_IMGUI::close()
+void AmentImgui::Close()
 {
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
@@ -99,7 +102,7 @@ void AMENT_IMGUI::close()
     glfwTerminate();
 }
 
-void AMENT_IMGUI::StartFrame()
+void AmentImgui::StartFrame()
 {
     glfwPollEvents();
     // Start the Dear ImGui frame
@@ -108,7 +111,7 @@ void AMENT_IMGUI::StartFrame()
     ImGui::NewFrame();
 }
 
-void AMENT_IMGUI::Render()
+void AmentImgui::Render()
 {
     // Rendering
     ImGui::Render();
