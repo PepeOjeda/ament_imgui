@@ -13,6 +13,7 @@ And, in your code, the entire setup is this:
 
 ```c++
 #include <ament_imgui/ament_imgui.h>
+#include <rclcpp/rclcpp.hpp>
 
 void main()
 {
@@ -22,13 +23,14 @@ void main()
     {
         AmentImgui::StartFrame();
 
-        //
         //use whatever ImGui calls you want here, directly
-        ImGui::Button();
-        //
+        ImGui::Begin("Frame");
+        if(ImGui::Button("I am a button"))
+            std::printf("Button pressed");
+        ImGui::End();
 
-        AmentImgui::Render();
         
+        AmentImgui::Render();
         rate.sleep();
     }
     AmentImgui::Close();
