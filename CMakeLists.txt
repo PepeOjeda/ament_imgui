@@ -21,7 +21,7 @@ include_directories(
 add_subdirectory(third_party/glfw)
 
 
-add_library(imgui 
+add_library(ament_imgui 
     src/imgui.cpp
     third_party/imgui/backends/imgui_impl_glfw.cpp
     third_party/imgui/backends/imgui_impl_opengl3.cpp
@@ -35,20 +35,20 @@ add_library(imgui
 )
 
 
-add_dependencies(imgui glfw)
-ament_target_dependencies(imgui rclcpp)
-target_link_libraries(imgui
+add_dependencies(ament_imgui glfw)
+ament_target_dependencies(ament_imgui rclcpp)
+target_link_libraries(ament_imgui
 glfw
 OpenGL
 )
 
-ament_export_libraries(imgui)
+ament_export_libraries(ament_imgui)
 ament_export_libraries(glfw)
 ament_export_libraries(OpenGL)
 ament_export_include_directories(include include/imgui)
 
 install(
-    TARGETS imgui
+    TARGETS ament_imgui
     DESTINATION lib
 )
 
