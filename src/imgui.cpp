@@ -1,11 +1,11 @@
 #include "ament_imgui/ament_imgui.h"
+#include <GLFW/glfw3.h>
 #include <cstdio>
-#include <string>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
-#include <GLFW/glfw3.h>
-#include <stdio.h>
 #include <rclcpp/logging.hpp>
+#include <stdio.h>
+#include <string>
 
 GLFWwindow* AmentImgui::window;
 
@@ -14,7 +14,7 @@ static void glfw_error_callback(int error, const char* description)
     fprintf(stderr, "Glfw Error %d: %s\n", error, description);
 }
 
-void AmentImgui::Setup(const char* ini_file_path, const char* window_title, float width, float height)
+void AmentImgui::Setup(const char* ini_file_path, const char* window_title, float width, float height, ImGuiConfigFlags flags)
 {
     glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit())
@@ -56,14 +56,9 @@ void AmentImgui::Setup(const char* ini_file_path, const char* window_title, floa
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
     (void)io;
-    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; // Enable Keyboard Controls
-    // io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
-    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable; // Enable Docking
-    // io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
-    // io.ConfigViewportsNoAutoMerge = true;
-    // io.ConfigViewportsNoTaskBarIcon = true;
+    io.ConfigFlags |= flags;
 
-    if(ini_file_path != nullptr)
+    if (ini_file_path != nullptr)
     {
         static std::string filepath(ini_file_path);
         RCLCPP_INFO(rclcpp::get_logger("AmentImgui"), "imgui.ini filepath: %s\n", filepath.c_str());
