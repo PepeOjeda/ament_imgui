@@ -29,6 +29,7 @@ add_library(ament_imgui
     third_party/imgui/imgui_tables.cpp
     third_party/imgui/imgui_widgets.cpp
     third_party/imgui/imgui.cpp
+    third_party/imgui/misc/cpp/imgui_stdlib.cpp
 
     third_party/implot/implot.cpp
     third_party/implot/implot_items.cpp
