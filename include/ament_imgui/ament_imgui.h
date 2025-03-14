@@ -16,4 +16,16 @@ public:
     static void Render();
 
     static GLFWwindow* window;
+
+    static constexpr ImGuiConfigFlags FlagsFixedLayout()
+    {
+        return ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove;
+    }
+
+    static void SetNextWindowFullscreen()
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        ImGui::SetNextWindowSize({io.DisplaySize.x, io.DisplaySize.y});
+        ImGui::SetNextWindowPos(ImVec2(0, 0));
+    }
 };
