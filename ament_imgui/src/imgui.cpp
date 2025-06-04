@@ -129,3 +129,8 @@ void AmentImgui::Render()
 
     glfwSwapBuffers(window);
 }
+
+bool AmentImgui::ShouldClose()
+{
+    return glfwWindowShouldClose(window);
+}
