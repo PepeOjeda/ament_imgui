@@ -17,11 +17,12 @@ And, in your code, the entire setup is this:
 
 void main()
 {
-    AmentImgui::Setup( "optional path to imgui.ini file" );
+    AmentImgui imgui;
+    imgui.Setup( "optional path to imgui.ini file" );
     rclcpp::Rate rate(30);
     while (rclcpp::ok())
     {
-        AmentImgui::StartFrame();
+        imgui.StartFrame();
 
         //use whatever ImGui calls you want here, directly
         ImGui::Begin("Frame");
@@ -30,10 +31,10 @@ void main()
         ImGui::End();
 
         
-        AmentImgui::Render();
+        imgui.Render();
         rate.sleep();
     }
-    AmentImgui::Close();
+    imgui.Close();
 }
 ```
 

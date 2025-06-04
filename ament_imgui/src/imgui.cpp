@@ -6,7 +6,6 @@
 #include <stdio.h>
 #include <string>
 
-
 static void glfw_error_callback(int error, const char* description)
 {
     fprintf(stderr, "Glfw Error %d: %s\n", error, description);
@@ -41,7 +40,7 @@ void AmentImgui::Setup(const char* ini_file_path, const char* window_title, floa
 // glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);            // 3.0+ only
 #endif
 
-    static std::string window_title_str = window_title;
+    window_title_str = window_title;
     // Create window with graphics context
     window = glfwCreateWindow(width, height, window_title_str.c_str(), NULL, NULL);
     if (window == NULL)
@@ -58,7 +57,7 @@ void AmentImgui::Setup(const char* ini_file_path, const char* window_title, floa
 
     if (ini_file_path != nullptr)
     {
-        static std::string filepath(ini_file_path);
+        filepath = ini_file_path;
         fprintf(stderr, "[AmentImGui] imgui.ini filepath: %s\n", filepath.c_str());
         io.IniFilename = filepath.c_str();
     }
