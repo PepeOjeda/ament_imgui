@@ -3,11 +3,9 @@
 #include <cstdio>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
-#include <rclcpp/logging.hpp>
 #include <stdio.h>
 #include <string>
 
-GLFWwindow* AmentImgui::window;
 
 static void glfw_error_callback(int error, const char* description)
 {
@@ -61,13 +59,13 @@ void AmentImgui::Setup(const char* ini_file_path, const char* window_title, floa
     if (ini_file_path != nullptr)
     {
         static std::string filepath(ini_file_path);
-        RCLCPP_INFO(rclcpp::get_logger("AmentImgui"), "imgui.ini filepath: %s\n", filepath.c_str());
+        fprintf(stderr, "[AmentImGui] imgui.ini filepath: %s\n", filepath.c_str());
         io.IniFilename = filepath.c_str();
     }
     else
     {
         io.IniFilename = nullptr;
-        RCLCPP_WARN(rclcpp::get_logger("AmentImgui"), "No .ini file provided. Layout changes will not be serialized.");
+        fprintf(stderr, "[AmentImGui] No .ini file provided. Layout changes will not be serialized.");
     }
 
     // Setup Dear ImGui style

@@ -1,9 +1,9 @@
 [submodule "third_party/imgui"]
-	path = third_party/imgui
+	path = ament_imgui/third_party/imgui
 	url = git@github.com:ocornut/imgui.git
 [submodule "third_party/implot"]
-	path = third_party/implot
+	path = ament_imgui/third_party/implot
 	url = git@github.com:epezent/implot.git
 [submodule "third_party/glfw"]
-	path = third_party/glfw
+	path = ament_imgui/third_party/glfw
 	url = git@github.com:glfw/glfw.git
