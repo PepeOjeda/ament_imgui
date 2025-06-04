@@ -64,7 +64,7 @@ void AmentImgui::Setup(const char* ini_file_path, const char* window_title, floa
     else
     {
         io.IniFilename = nullptr;
-        fprintf(stderr, "[AmentImGui] No .ini file provided. Layout changes will not be serialized.");
+        fprintf(stderr, "[AmentImGui] No .ini file provided. Layout changes will not be serialized.\n");
     }
 
     // Setup Dear ImGui style

@@ -6,13 +6,7 @@ set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_CXX_FLAGS_RELEASE "-g -O3")
 
 
-include_directories(
-    include 
-    third_party/imgui
-    third_party/imgui/backends 
 
-    third_party/implot
-)
 
 add_subdirectory(third_party/glfw)
 
@@ -30,7 +24,13 @@ add_library(ament_imgui
     third_party/implot/implot.cpp
     third_party/implot/implot_items.cpp
 )
+target_include_directories(ament_imgui PUBLIC
+    include 
+    third_party/imgui
+    third_party/imgui/backends 
 
+    third_party/implot
+)
 
 add_dependencies(ament_imgui glfw)
 target_link_libraries(ament_imgui
