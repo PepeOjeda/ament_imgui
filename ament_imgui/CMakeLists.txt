@@ -13,7 +13,6 @@ add_subdirectory(third_party/glfw)
 
 add_library(ament_imgui 
     src/imgui.cpp
-    src/fonts/roboto.cpp
     third_party/imgui/backends/imgui_impl_glfw.cpp
     third_party/imgui/backends/imgui_impl_opengl3.cpp
     third_party/imgui/imgui_draw.cpp
@@ -21,9 +20,14 @@ add_library(ament_imgui
     third_party/imgui/imgui_widgets.cpp
     third_party/imgui/imgui.cpp
     third_party/imgui/misc/cpp/imgui_stdlib.cpp
-
+    
     third_party/implot/implot.cpp
     third_party/implot/implot_items.cpp
+    
+    # fonts
+    src/fonts/roboto.cpp
+    src/fonts/climate-crisis.cpp
+    src/fonts/revalia.cpp
 )
 target_include_directories(ament_imgui PUBLIC
     include 
