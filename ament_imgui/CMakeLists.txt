@@ -13,6 +13,7 @@ add_subdirectory(third_party/glfw)
 
 add_library(ament_imgui 
     src/imgui.cpp
+    src/fonts/roboto.cpp
     third_party/imgui/backends/imgui_impl_glfw.cpp
     third_party/imgui/backends/imgui_impl_opengl3.cpp
     third_party/imgui/imgui_draw.cpp
@@ -38,11 +39,10 @@ target_link_libraries(ament_imgui
     OpenGL
 )
 
-#add_executable(example
-#    third_party/imgui/imgui_demo.cpp
-#    third_party/imgui/examples/example_glfw_opengl3/main.cpp)
-#add_dependencies(example imgui)
-#target_link_libraries(example imgui)
+add_executable(example
+   third_party/imgui/imgui_demo.cpp
+   third_party/imgui/examples/example_glfw_opengl3/main.cpp)
+target_link_libraries(example ament_imgui)
 #
 #
 #install(
