@@ -25,7 +25,10 @@ public:
     {
         ImGuiIO& io = ImGui::GetIO();
         ImGui::SetNextWindowSize({io.DisplaySize.x, io.DisplaySize.y});
-        ImGui::SetNextWindowPos(ImVec2(0, 0));
+
+        const ImGuiViewport* main_viewport = ImGui::GetMainViewport();
+        ImGui::SetNextWindowViewport(main_viewport->ID);
+        ImGui::SetNextWindowPos(ImVec2(main_viewport->WorkPos.x, main_viewport->WorkPos.y));
     }
 
     bool ShouldClose();

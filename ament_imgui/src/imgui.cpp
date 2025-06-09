@@ -54,7 +54,8 @@ void AmentImgui::Setup(const char* ini_file_path, const char* window_title, floa
     ImGuiIO& io = ImGui::GetIO();
     (void)io;
     io.ConfigFlags |= flags;
-
+    io.ConfigViewportsNoAutoMerge = true;
+    
     if (ini_file_path != nullptr)
     {
         filepath = ini_file_path;
