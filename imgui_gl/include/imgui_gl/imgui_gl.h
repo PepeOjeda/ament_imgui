@@ -4,7 +4,7 @@
 
 struct GLFWwindow;
 
-class AmentImgui
+class ImguiGL
 {
 public:
     void Setup(const char* ini_file_path = nullptr,

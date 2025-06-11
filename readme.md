@@ -17,7 +17,7 @@ And, in your code, the entire setup is this:
 
 void main()
 {
-    AmentImgui imgui;
+    ImguiGL imgui;
     imgui.Setup( "optional path to imgui.ini file" );
     rclcpp::Rate rate(30);
     while (rclcpp::ok())

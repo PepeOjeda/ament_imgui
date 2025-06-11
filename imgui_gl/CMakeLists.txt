@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(ament_imgui)
+project(imgui_gl)
 
 ##################
 set(CMAKE_BUILD_TYPE "Release") 
@@ -11,7 +11,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-g -O3")
 add_subdirectory(third_party/glfw)
 
 
-add_library(ament_imgui 
+add_library(imgui_gl 
     src/imgui.cpp
     third_party/imgui/backends/imgui_impl_glfw.cpp
     third_party/imgui/backends/imgui_impl_opengl3.cpp
@@ -29,7 +29,7 @@ add_library(ament_imgui
     src/fonts/climate-crisis.cpp
     src/fonts/revalia.cpp
 )
-target_include_directories(ament_imgui PUBLIC
+target_include_directories(imgui_gl PUBLIC
     include 
     third_party/imgui
     third_party/imgui/backends 
@@ -37,8 +37,8 @@ target_include_directories(ament_imgui PUBLIC
     third_party/implot
 )
 
-add_dependencies(ament_imgui glfw)
-target_link_libraries(ament_imgui
+add_dependencies(imgui_gl glfw)
+target_link_libraries(imgui_gl
     glfw
     OpenGL
 )
@@ -46,7 +46,7 @@ target_link_libraries(ament_imgui
 add_executable(example
    third_party/imgui/imgui_demo.cpp
    third_party/imgui/examples/example_glfw_opengl3/main.cpp)
-target_link_libraries(example ament_imgui)
+target_link_libraries(example imgui_gl)
 #
 #
 #install(

@@ -1,4 +1,4 @@
-#include "ament_imgui/ament_imgui.h"
+#include "imgui_gl/imgui_gl.h"
 #include <GLFW/glfw3.h>
 #include <cstdio>
 #include <imgui_impl_glfw.h>
@@ -11,7 +11,7 @@ static void glfw_error_callback(int error, const char* description)
     fprintf(stderr, "Glfw Error %d: %s\n", error, description);
 }
 
-void AmentImgui::Setup(const char* ini_file_path, const char* window_title, float width, float height, ImGuiConfigFlags flags)
+void ImguiGL::Setup(const char* ini_file_path, const char* window_title, float width, float height, ImGuiConfigFlags flags)
 {
     glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit())
@@ -59,13 +59,13 @@ void AmentImgui::Setup(const char* ini_file_path, const char* window_title, floa
     if (ini_file_path != nullptr)
     {
         filepath = ini_file_path;
-        fprintf(stderr, "[AmentImGui] imgui.ini filepath: %s\n", filepath.c_str());
+        fprintf(stderr, "[ImguiGL] imgui.ini filepath: %s\n", filepath.c_str());
         io.IniFilename = filepath.c_str();
     }
     else
     {
         io.IniFilename = nullptr;
-        fprintf(stderr, "[AmentImGui] No .ini file provided. Layout changes will not be serialized.\n");
+        fprintf(stderr, "[ImguiGL] No .ini file provided. Layout changes will not be serialized.\n");
     }
 
     // Setup Dear ImGui style
@@ -85,7 +85,7 @@ void AmentImgui::Setup(const char* ini_file_path, const char* window_title, floa
     ImGui_ImplOpenGL3_Init(glsl_version);
 }
 
-void AmentImgui::Close()
+void ImguiGL::Close()
 {
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
@@ -95,7 +95,7 @@ void AmentImgui::Close()
     glfwTerminate();
 }
 
-void AmentImgui::StartFrame()
+void ImguiGL::StartFrame()
 {
     glfwPollEvents();
     // Start the Dear ImGui frame
@@ -104,7 +104,7 @@ void AmentImgui::StartFrame()
     ImGui::NewFrame();
 }
 
-void AmentImgui::Render()
+void ImguiGL::Render()
 {
     // Rendering
     ImGui::Render();
@@ -131,7 +131,7 @@ void AmentImgui::Render()
     glfwSwapBuffers(window);
 }
 
-bool AmentImgui::ShouldClose()
+bool ImguiGL::ShouldClose()
 {
     return glfwWindowShouldClose(window);
 }
