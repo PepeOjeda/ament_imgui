@@ -12,7 +12,7 @@ ament_target_dependencies(ament_imgui)
 And, in your code, the entire setup is this:
 
 ```c++
-#include <ament_imgui/ament_imgui.h>
+#include <imgui_gl/imgui_gl.h>
 #include <rclcpp/rclcpp.hpp>
 
 void main()
