@@ -3,6 +3,7 @@ project(imgui_gl)
 
 ##################
 set(CMAKE_BUILD_TYPE "Release") 
+set(CMAKE_CXX_FLAGS "-fPIC")
 set(CMAKE_CXX_FLAGS_RELEASE "-g -O3")
 
 
