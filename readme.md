@@ -17,12 +17,11 @@ And, in your code, the entire setup is this:
 
 void main()
 {
-    ImguiGL imgui;
-    imgui.Setup( "optional path to imgui.ini file" );
+    ImguiGL::Setup( "optional path to imgui.ini file" );
     rclcpp::Rate rate(30);
     while (rclcpp::ok())
     {
-        imgui.StartFrame();
+        ImguiGL::StartFrame();
 
         //use whatever ImGui calls you want here, directly
         ImGui::Begin("Frame");
@@ -31,10 +30,10 @@ void main()
         ImGui::End();
 
         
-        imgui.Render();
+        ImguiGL::Render();
         rate.sleep();
     }
-    imgui.Close();
+    ImguiGL::Close();
 }
 ```
 
