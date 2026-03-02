@@ -33,6 +33,7 @@ add_library(imgui_gl
 target_include_directories(imgui_gl PUBLIC
     include 
     third_party
+    third_party/imgui
     third_party/imgui/backends 
 )
 
