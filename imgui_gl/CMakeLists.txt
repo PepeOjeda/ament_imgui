@@ -48,9 +48,4 @@ add_executable(example
    third_party/imgui/imgui_demo.cpp
    third_party/imgui/examples/example_glfw_opengl3/main.cpp)
 target_link_libraries(example imgui_gl)
-#
-#
-#install(
-#    TARGETS example
-#    DESTINATION share/${PROJECT_NAME}
-#)
+
