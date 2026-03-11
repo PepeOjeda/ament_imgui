@@ -25,6 +25,11 @@ install(
 )
 
 install(
+   TARGETS example
+   DESTINATION lib/${PROJECT_NAME}
+)
+
+install(
     DIRECTORY 
         imgui_gl/include/imgui_gl 
         imgui_gl/third_party/imgui 
