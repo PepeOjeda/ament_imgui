@@ -13,10 +13,10 @@ namespace ImGui
             ImGui::PushStyleColor(key, color);
         }
 
-        ScopedStyle(ImGuiStyleVar_ key, ImU32 color)
+        ScopedStyle(ImGuiStyleVar_ key, float value)
         {
-            type = Color;
-            ImGui::PushStyleVar(key, color);
+            type = Var;
+            ImGui::PushStyleVar(key, value);
         }
 
         ~ScopedStyle()
